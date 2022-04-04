@@ -11,13 +11,12 @@ datasource db {
 }
 
 model Category {
-  id              Int       @id @default(autoincrement())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  title           String    @db.VarChar(255)
-  content         String
-  images          String?
-  Product         Product[]
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  title     String    @db.VarChar(255)
+  content   String
+  Product   Product[]
 }
 
 model Product {
@@ -26,45 +25,45 @@ model Product {
   updatedAt       DateTime @updatedAt
   title           String   @db.VarChar(255)
   content         String?
-  images          String?
-  priority        SmallInt
+  imagesId        Int
+  imagesRelation  Images   @relation(fields: [imagesId], references: [id])
+  priority        Int
   active          Boolean  @default(false)
   categoryId      Int
   productCategory Category @relation(fields: [categoryId], references: [id])
 }
 
 model Page {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  title           String   @db.VarChar(255)
-  content         String?
-  images          String?
-  priority        SmallInt
-  active          Boolean  @default(false)
-  row             Row[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(255)
+  content   String?
+  priority  Int
+  active    Boolean  @default(false)
+  row       Row[]
 }
 
 model Module {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  priority        SmallInt
-  active          Boolean  @default(false)
-  rowId           Int
-  rowRelation     Row      @relation(fields: [rowId], references: [id])
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  priority    Int
+  active      Boolean  @default(false)
+  rowId       Int
+  rowRelation Row      @relation(fields: [rowId], references: [id])
 
 }
 
 model Row {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  priority        SmallInt
-  active          Boolean  @default(false)
-  module          Module[]
-  pageId          Int
-  pageRelation    Page @relation(fields: [pageId], references: [id])
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  priority      Int
+  active        Boolean  @default(false)
+  module        Module[]
+  pageId        Int
+  pagesRelation Page     @relation(fields: [pageId], references: [id])
 
 }
 
@@ -73,29 +72,39 @@ model User {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   firstName       String
-  surname         String   @default(false)
+  surname         String
   email           String   @unique
-  permissionLevel SmallInt @default(0)
+  permissionLevel Int      @default(0)
   lastLogin       DateTime
 
 }
 
 model Profile {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  companyName     String
-  address1        String   @default(false)
-  address2        String?  
-  address3        String?
-  city            String?
-  county          String?
-  postcode        String?
-  facebook        String? @unique
-  twitter         String? @unique
-  instagram       String? @unique
-  linkedin        String? @unique
-  logoId          Int
-  imageRelation   Image @relation(fields: [logoId], references: [id])
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  companyName String
+  address1    String
+  address2    String?
+  address3    String?
+  city        String?
+  county      String?
+  postcode    String?
+  facebook    String?  @unique
+  twitter     String?  @unique
+  instagram   String?  @unique
+  linkedin    String?  @unique
+
+}
+
+model Images {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  title       String?
+  alt         String
+  description String
+  parentId    Int
+  product     Product[]
 
 }
