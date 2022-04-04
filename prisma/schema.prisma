@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id              Int       @id @default(autoincrement())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  title           String    @db.VarChar(255)
+  content         String
+  images          String?
+  Product         Product[]
+}
+
+model Product {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  title           String   @db.VarChar(255)
+  content         String?
+  images          String?
+  priority        SmallInt
+  active          Boolean  @default(false)
+  categoryId      Int
+  productCategory Category @relation(fields: [categoryId], references: [id])
+}
+
+model Page {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  title           String   @db.VarChar(255)
+  content         String?
+  images          String?
+  priority        SmallInt
+  active          Boolean  @default(false)
+  row             Row[]
+}
+
+model Module {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  priority        SmallInt
+  active          Boolean  @default(false)
+  rowId           Int
+  rowRelation     Row      @relation(fields: [rowId], references: [id])
+
+}
+
+model Row {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  priority        SmallInt
+  active          Boolean  @default(false)
+  module          Module[]
+  pageId          Int
+  pageRelation    Page @relation(fields: [pageId], references: [id])
+
+}
