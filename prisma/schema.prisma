@@ -67,3 +67,35 @@ model Row {
   pageRelation    Page @relation(fields: [pageId], references: [id])
 
 }
+
+model User {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  firstName       String
+  surname         String   @default(false)
+  email           String   @unique
+  permissionLevel SmallInt @default(0)
+  lastLogin       DateTime
+
+}
+
+model Profile {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  companyName     String
+  address1        String   @default(false)
+  address2        String?  
+  address3        String?
+  city            String?
+  county          String?
+  postcode        String?
+  facebook        String? @unique
+  twitter         String? @unique
+  instagram       String? @unique
+  linkedin        String? @unique
+  logoId          Int
+  imageRelation   Image @relation(fields: [logoId], references: [id])
+
+}
