@@ -29,6 +29,26 @@ a {
   height: 100vh;
   
 }
+
+.flex{
+  display: flex;
+}
+.pad10 {
+  padding: 10px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.margin-left10 {
+  margin-left: 10px;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
@@ -36,10 +56,22 @@ a {
 
 
 .container {
+  max-width: 1200px;
 }
 
 .auth-title {
   font-size: 3rem;
 
+
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.edit-form label > *{
+  margin: 5px 0;
 
 }
