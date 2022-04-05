@@ -1,13 +1,13 @@
-const singleWordCapitalize = function(word) {
+const capitalize = function(word) {
     const splitWord = word.split('/')
     const lettered = splitWord.slice(-1)
     const string = lettered[0].split('')
     const capitalize = string[0].toUpperCase()
     string.shift()
     string.unshift(capitalize)
-    const capitalizedWord = string.join('')
+    const capitalized = string.join('')
 
-    return capitalizedWord
+    return capitalized
 }
 
 const decapitalize = function(word) {
@@ -22,4 +22,4 @@ const decapitalize = function(word) {
     return decapitalized
 }
 
-export { singleWordCapitalize, decapitalize}
+export { capitalize, decapitalize}

@@ -9,7 +9,10 @@ function Pages({pages}) {
       <div className="auth-container">
         {pages.map(page => {
           return (
-            <Link key={page.id} href={`${decapitalize(page.title.trim())}`}>
+            <Link key={page.id} href={{
+              query: page,
+              pathname:`/auth/edit/page/${decapitalize(page.title.trim())}`,
+              }}>
                 <a className="flex-col text-med" >
                   <h4>{page.title}</h4>
                 </a>

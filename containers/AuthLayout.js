@@ -4,13 +4,13 @@ import { CgProfile } from 'react-icons/cg';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import {singleWordCapitalize} from '../helpers/stringHelpers';
+import {capitalize} from '../helpers/stringHelpers';
 
 function AuthLayout({children}) {
 
   const router = useRouter();
 
-  const location = singleWordCapitalize(router.pathname)
+  const location = capitalize(router.pathname)
 
   return (
     <>
