@@ -40,7 +40,10 @@ model Page {
   content   String?
   priority  Int      @default(99)
   active    Boolean  @default(true)
-  row       Row[]
+  Row       Row[]
+  metatitle String?
+  metadesc  String?
+  metakeywords String?
 }
 
 model Module {

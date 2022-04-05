@@ -16,7 +16,8 @@ function AuthLayout({children}) {
     <>
       <Head>
         <title>Shutt CMS - {location}</title>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="author" content="Liam Pugh"/>
       </Head>
       <nav className='auth-nav'>
         <Link href="/auth/pages" passHref={true}>
@@ -51,8 +52,9 @@ function AuthLayout({children}) {
         </Link>
       </nav>
       {children}
-      
-
+      <footer>
+        Liam Pugh &copy;2022 
+      </footer>
     </>
   )
 }
