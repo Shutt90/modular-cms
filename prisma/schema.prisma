@@ -14,30 +14,29 @@ model Category {
   id        Int       @id @default(autoincrement())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  title     String    @db.VarChar(255)
-  content   String
+  title     String    @unique @db.VarChar(191)
+  content   String?
   Product   Product[]
 }
 
 model Product {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  title           String   @db.VarChar(255)
-  content         String?
-  imagesId        Int
-  imagesRelation  Images   @relation(fields: [imagesId], references: [id])
-  priority        Int      @default(99)
-  active          Boolean  @default(true)
-  categoryId      Int
-  productCategory Category @relation(fields: [categoryId], references: [id])
+  id               Int      @id @default(autoincrement())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  title            String   @db.VarChar(255)
+  content          String?
+  priority         Int      @default(99)
+  active           Boolean  @default(true)
+  categoryId       Int
+  categoryRelation Category @relation(fields: [categoryId], references: [id])
+  Image            Image[]
 }
 
 model Page {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
+  title     String   @unique  @db.VarChar(191) 
   content   String?
   priority  Int      @default(99)
   active    Boolean  @default(true)
@@ -61,7 +60,7 @@ model Row {
   updatedAt     DateTime @updatedAt
   priority      Int      @default(99)
   active        Boolean  @default(true)
-  module        Module[]
+  Module        Module[]
   pageId        Int
   pagesRelation Page     @relation(fields: [pageId], references: [id])
 
@@ -97,14 +96,15 @@ model Profile {
 
 }
 
-model Images {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  title       String?
-  alt         String
-  description String
-  parentId    Int
-  product     Product[]
+model Image {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  title           String?
+  src             String
+  alt             String
+  description     String?
+  productId       Int
+  productRelation Product  @relation(fields: [productId], references: [id])
 
 }
