@@ -27,8 +27,8 @@ model Product {
   content         String?
   imagesId        Int
   imagesRelation  Images   @relation(fields: [imagesId], references: [id])
-  priority        Int
-  active          Boolean  @default(false)
+  priority        Int      @default(99)
+  active          Boolean  @default(true)
   categoryId      Int
   productCategory Category @relation(fields: [categoryId], references: [id])
 }
@@ -39,8 +39,8 @@ model Page {
   updatedAt DateTime @updatedAt
   title     String   @db.VarChar(255)
   content   String?
-  priority  Int
-  active    Boolean  @default(false)
+  priority  Int      @default(99)
+  active    Boolean  @default(true)
   row       Row[]
 }
 
@@ -48,8 +48,8 @@ model Module {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  priority    Int
-  active      Boolean  @default(false)
+  priority    Int      @default(99)
+  active      Boolean  @default(true)
   rowId       Int
   rowRelation Row      @relation(fields: [rowId], references: [id])
 
@@ -59,8 +59,8 @@ model Row {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  priority      Int
-  active        Boolean  @default(false)
+  priority      Int      @default(99)
+  active        Boolean  @default(true)
   module        Module[]
   pageId        Int
   pagesRelation Page     @relation(fields: [pageId], references: [id])
