@@ -1,8 +1,6 @@
-import React from 'react'
-
 function Pages() {
   return (
-    <div>Pages</div>
+    <h1 style={{textAlign: 'center'}}>Pages</h1>
   )
 }
 
