@@ -19,5 +19,27 @@ a {
 .auth-nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 3rem;
+}
+
+
+.split {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  height: 100vh;
+  
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+}
+
+.auth-title {
+  font-size: 3rem;
+
+
 }

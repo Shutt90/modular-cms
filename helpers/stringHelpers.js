@@ -10,4 +10,16 @@ const singleWordCapitalize = function(word) {
     return capitalizedWord
 }
 
-export default singleWordCapitalize
+const decapitalize = function(word) {
+    const splitWord = word.split('/')
+    const lettered = splitWord.slice(-1)
+    const string = lettered[0].split('')
+    const capitalize = string[0].toLowerCase()
+    string.shift()
+    string.unshift(capitalize)
+    const decapitalized = string.join('')
+
+    return decapitalized
+}
+
+export { singleWordCapitalize, decapitalize}
