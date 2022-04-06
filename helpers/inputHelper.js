@@ -23,4 +23,38 @@ const addInput = function(type = 'text', prop, propId, labelText) {
 
 }
 
-export { addInput }
+
+const addDropdown = function(options = Array, name, propId, propSelected, labelText, haveSelected = false) {
+
+
+    if(propSelected === null) {
+        return (
+            <>  
+                <label htmlFor={`${name}-${propId}`}>{labelText}</label>
+                <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
+                    {options.map((option) => {
+                        return (
+                            <option value={option}>{option}</option>
+                        )
+                    })}
+                </select>
+            </>
+        )
+        
+    } else {
+        return (
+            <>  
+                <label htmlFor={`${name}-${propId}`}>{labelText}</label>
+                <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
+                    {options.map((option) => {
+                        return (
+                            <option selected={propSelected === option ? "selected" : ""} value={option}>{option}</option>
+                        )
+                    })}
+                </select>
+            </>
+        )
+    }
+}
+
+export { addInput, addDropdown }
