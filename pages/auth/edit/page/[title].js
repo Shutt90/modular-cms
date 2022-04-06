@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import {BiArrowBack} from 'react-icons/bi';
 import Link from 'next/link'
+import { addInput } from '../../../../helpers/inputHelper';
 
 function Title() {
     const router = useRouter();
@@ -19,23 +20,17 @@ function Title() {
         </div>
         <div className="container">
             <form method="POST" className="edit-form" action={`/api/edit/page/${page.id}`}>
-                <label htmlFor={`pagetitle-${page.id}`}>Title</label>
-                <input type="text" value={`${page.title}`} id={`pagetitle-${page.id}`}></input>
-                <label htmlFor={`pagecontent-${page.id}`}>Content</label>
-                <textarea value={`${page.content}`} id={`pagecontent-${page.id}`}></textarea>
-                <label htmlFor={`pageprio-${page.id}`}>Priority</label>
-                <input type="text" value={`${page.priority}`} id={`pageprio-${page.id}`}></input>
+                {addInput('text', page.title, page.id, 'Title')}
+                {addInput('textarea', page.content, page.id, 'Content')}
+                {addInput('text', page.priority, page.id, 'Priority')}
                 <label htmlFor={`pageactive-${page.id}`}>Active?</label>
                 <select id={`pageactive-${page.id}`}>
                     <option selected={page.active ? "selected" : ""} value="true">Yes</option>
                     <option selected={!page.active ? "selected" : ""} value="false">No</option>
                 </select>
-                <label htmlFor={`pagemetatitle-${page.id}`}>Meta Title</label>
-                <input type="text" value={`${page.title}`} id={`pagemetatitle-${page.id}`}></input>
-                <label htmlFor={`pagemetakey-${page.id}`}>Meta Description</label>
-                <textarea value={`${page.content}`} id={`pagemetakey-${page.id}`}></textarea>
-                <label htmlFor={`pagemetadesc-${page.id}`}>Meta Keywords (seperate with a comma)</label>
-                <input type="text" value={`${page.title}`} id={`pagemetadesc-${page.id}`}></input>
+                {addInput('text', page.metatitle, page.id, 'Meta Title')}
+                {addInput('textarea', page.metadesc, page.id, 'Meta Description')}
+                {addInput('text', page.metakeywords, page.id, 'Meta Keywords')}
                 <input type="submit" value="Confirm"></input>
             </form>
         </div>
