@@ -1,0 +1,13 @@
+.input {
+    text-align: center;
+    max-width: 100px;
+    border-radius: 1rem;
+    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);
+    margin: 1rem 0;
+    color: white;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family:'Bebas Neue', arial;
+
+}

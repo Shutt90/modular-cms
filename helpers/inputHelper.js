@@ -1,3 +1,5 @@
+import SubmitButton from "../comps/SubmitButton"
+
 const addInput = function(type = 'text', prop, propId, labelText) {
     // example 
     // <label htmlFor={`pagetitle-${page.id}`}>Title</label>
@@ -26,7 +28,6 @@ const addInput = function(type = 'text', prop, propId, labelText) {
 
 const addDropdown = function(options = Array, name, propId, propSelected, labelText, haveSelected = false) {
 
-
     if(propSelected === null) {
         return (
             <>  
@@ -34,7 +35,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
                 <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
-                            <option value={option}>{option}</option>
+                            <option key={propId} value={option}>{option}</option>
                         )
                     })}
                 </select>
@@ -48,7 +49,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
                 <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
-                            <option selected={propSelected === option ? "selected" : ""} value={option}>{option}</option>
+                            <option key={propId} selected={propSelected === option ? "selected" : ""} value={option}>{option}</option>
                         )
                     })}
                 </select>
@@ -57,4 +58,10 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
     }
 }
 
-export { addInput, addDropdown }
+const addSubmit = function() {
+    return (
+        <SubmitButton/>
+    )
+}
+
+export { addInput, addDropdown, addSubmit }

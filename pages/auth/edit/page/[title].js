@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import {BiArrowBack} from 'react-icons/bi';
 import Link from 'next/link'
-import { addInput, addDropdown } from '../../../../helpers/inputHelper';
+import { addInput, addDropdown, addSubmit } from '../../../../helpers/inputHelper';
 
 function Title() {
     const router = useRouter();
@@ -29,7 +29,7 @@ function Title() {
                 {addInput('text', page.metatitle, page.id, 'Meta Title')}
                 {addInput('textarea', page.metadesc, page.id, 'Meta Description')}
                 {addInput('text', page.metakeywords, page.id, 'Meta Keywords')}
-                <input type="submit" value="Confirm"></input>
+                {addSubmit()}
             </form>
         </div>
     </div>
