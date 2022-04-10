@@ -11,14 +11,14 @@ const addInput = function(type = 'text', name, prop, propId, labelText) {
         return (
             <>
                 <label htmlFor={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}>{labelText}</label>
-                <input type={type} defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></input>
+                <input name={name} type={type} defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></input>
             </>
         )
     } else if (type === 'textarea') {
         return (
             <>
                 <label htmlFor={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}>{labelText}</label>
-                <textarea defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></textarea>
+                <textarea name={name} defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></textarea>
             </>
         )
 
@@ -33,7 +33,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
         return (
             <>  
                 <label htmlFor={`${name}-${propId}`}>{labelText}</label>
-                <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
+                <select id={`${name}-${propId}`} id={`${name}-${propId}`} name={`${name}`}>
                     {options.map((option) => {
                         return (
                             <option key={propId}>{option}</option>
