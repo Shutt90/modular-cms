@@ -3,10 +3,11 @@ import { useRouter } from 'next/router';
 import {BiArrowBack} from 'react-icons/bi';
 import Link from 'next/link'
 import { addInput, addDropdown, addSubmit } from '../../../../helpers/inputHelper';
+import { removedUndefined } from '../../../../helpers/stringHelpers';
 
 function Title() {
     const router = useRouter();
-    const page = router.query;
+    const page = router.query;  
 
     const active = ['true', 'false']
 
@@ -22,13 +23,13 @@ function Title() {
         </div>
         <div className="container">
             <form method="POST" className="edit-form" action={`/api/edit/page/${page.id}`}>
-                {addInput('text', page.title, page.id, 'Title')}
-                {addInput('textarea', page.content, page.id, 'Content')}
-                {addInput('text', page.priority, page.id, 'Priority')}
+                {addInput('text', 'page', removedUndefined(page.title), page.id, 'Title')}
+                {addInput('textarea', 'page', removedUndefined(page.content), page.id, 'Content')}
+                {addInput('text','page', page.priority, page.id, 'Priority')}
                 {addDropdown(active, 'active', page.id, page.active,  'Active?', true)}
-                {addInput('text', page.metatitle, page.id, 'Meta Title')}
-                {addInput('textarea', page.metadesc, page.id, 'Meta Description')}
-                {addInput('text', page.metakeywords, page.id, 'Meta Keywords')}
+                {addInput('text','page', removedUndefined(page.metatitle), page.id, 'Meta Title')}
+                {addInput('textarea','page', removedUndefined(page.metadesc), page.id, 'Meta Description')}
+                {addInput('text','page', removedUndefined(page.metakeywords), page.id, 'Meta Keywords')}
                 {addSubmit()}
             </form>
         </div>

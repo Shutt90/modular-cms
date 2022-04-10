@@ -22,4 +22,19 @@ const decapitalize = function(word) {
     return decapitalized
 }
 
-export { capitalize, decapitalize}
+const removeSpaces = function(word) {
+    const noSpaces = word.replace(' ', '')
+
+    return noSpaces
+}
+
+const removedUndefined = function(value) {
+    if(value === undefined) {
+        return ''
+    } else {
+        return value
+    }
+
+}
+
+export { capitalize, decapitalize, removeSpaces, removedUndefined}

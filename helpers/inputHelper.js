@@ -1,6 +1,7 @@
 import SubmitButton from "../comps/SubmitButton"
+import { decapitalize, removeSpaces } from "./stringHelpers"
 
-const addInput = function(type = 'text', prop, propId, labelText) {
+const addInput = function(type = 'text', name, prop, propId, labelText) {
     // example 
     // <label htmlFor={`pagetitle-${page.id}`}>Title</label>
     // <input type="text" value={`${page.title}`} id={`pagetitle-${page.id}`}></input>
@@ -9,15 +10,15 @@ const addInput = function(type = 'text', prop, propId, labelText) {
 
         return (
             <>
-                <label htmlFor={`${prop}-${propId}`}>{labelText}</label>
-                <input type={type} defaultValue={`${prop}`} id={`${prop}-${propId}`}></input>
+                <label htmlFor={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}>{labelText}</label>
+                <input type={type} defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></input>
             </>
         )
     } else if (type === 'textarea') {
         return (
             <>
-                <label htmlFor={`${prop}-${propId}`}>{labelText}</label>
-                <textarea defaultValue={`${prop}`} id={`${prop}-${propId}`}></textarea>
+                <label htmlFor={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}>{labelText}</label>
+                <textarea defaultValue={`${prop}`} id={`${name}-${removeSpaces(decapitalize(labelText))}-${propId}`}></textarea>
             </>
         )
 
@@ -35,7 +36,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
                 <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
-                            <option key={propId} value={option}>{option}</option>
+                            <option key={propId}>{option}</option>
                         )
                     })}
                 </select>
@@ -46,10 +47,10 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
         return (
             <>  
                 <label htmlFor={`${name}-${propId}`}>{labelText}</label>
-                <select id={`${name}-${propId}`} onChange={(e) => e.preventDefault()} name={`${name}-${propId}`}>
+                <select id={`${name}-${propId}`} defaultValue={propSelected} onChange={(e) => e.preventDefault()} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
-                            <option key={propId} selected={propSelected === option ? "selected" : ""}>{option}</option>
+                            <option key={`select-${propId}`} >{option}</option>
                         )
                     })}
                 </select>
