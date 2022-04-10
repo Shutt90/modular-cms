@@ -4,6 +4,7 @@ import {BiArrowBack} from 'react-icons/bi';
 import Link from 'next/link'
 import { addInput, addDropdown, addSubmit } from '../../../../helpers/inputHelper';
 import { removedUndefined } from '../../../../helpers/stringHelpers';
+import Tabs from '../../../../containers/Tabs';
 
 function Title() {
     const router = useRouter();
@@ -21,6 +22,7 @@ function Title() {
                 </a>
             </Link>
         </div>
+        <Tabs tabs={['form', 'rows', 'settings']}/>
         <div className="container">
             <form method="POST" className="edit-form" action={`/api/edit/page/${page.id}`}>
                 {addInput('text', 'page', removedUndefined(page.title), page.id, 'Title')}

@@ -1,0 +1,10 @@
+.tab {
+    border: 1px black solid;
+    border-bottom: 0;
+    border-radius: 2rem 2rem 0 0;
+    padding: 0 2rem;
+    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);
+    color: white;
+    font-family:'Bebas Neue', arial;
+    cursor: pointer;
+}
