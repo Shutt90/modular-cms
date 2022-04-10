@@ -1,10 +1,31 @@
-import styles from '/styles/comps/tab.module.css'
+import styles from '/styles/comps/tab.module.css';
+import {motion} from 'framer-motion';
+import { useState } from 'react';
 
-function Tab({name}) {
+function Tab({name, onClick}) {
+    const [isHovered, setIsHovered]  = useState(false)
+    const variants = {
+        initial: {
+            width: 0,
+            height: '2px',
+            backgroundColor: 'transparent',
+            margin: '0 0 1rem 0',
+        },
+        onHover: {
+            width: '100%',
+            height: '2px',
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            transition: {
+                duration: 0.8,
+                ease: 'linear'
+            }
+        }
+    }
   return (
-    <div className={styles.tab} onClick={e => console.log(e)}>
+    <motion.div onHoverStart={() => setIsHovered(true)} onHoverEnd={() => setIsHovered(false)} variants={variants} className={styles.tab} onClick={onClick}>
         <h3 className={styles.title}>{name}</h3>
-    </div>
+        <motion.p variants={variants} initial="initial" animate={isHovered ? "onHover" : ""} className={styles.border}></motion.p>
+    </motion.div>
   )
 }
 

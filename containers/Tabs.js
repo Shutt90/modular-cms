@@ -7,7 +7,7 @@ function Tabs({tabs = Array}) {
     <div className={styles.container}>
         {tabs.map(tab => {
                 return (
-                    <Tab name={capitalize(tab)}/>
+                    <Tab onClick={(e) => console.log(e)} name={capitalize(tab)}/>
                 )
             })
         }
