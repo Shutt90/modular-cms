@@ -10,14 +10,14 @@ const addInput = function(type = 'text', prop, propId, labelText) {
         return (
             <>
                 <label htmlFor={`${prop}-${propId}`}>{labelText}</label>
-                <input type={type} value={`${prop}`} id={`${prop}-${propId}`}></input>
+                <input type={type} defaultValue={`${prop}`} id={`${prop}-${propId}`}></input>
             </>
         )
     } else if (type === 'textarea') {
         return (
             <>
                 <label htmlFor={`${prop}-${propId}`}>{labelText}</label>
-                <textarea value={`${prop}`} id={`${prop}-${propId}`}></textarea>
+                <textarea defaultValue={`${prop}`} id={`${prop}-${propId}`}></textarea>
             </>
         )
 
@@ -26,7 +26,7 @@ const addInput = function(type = 'text', prop, propId, labelText) {
 }
 
 
-const addDropdown = function(options = Array, name, propId, propSelected, labelText, haveSelected = false) {
+const addDropdown = function(options = Array, name, propId, propSelected, labelText) {
 
     if(propSelected === null) {
         return (
@@ -49,7 +49,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
                 <select id={`${name}-${propId}`} onChange={(e) => e.preventDefault()} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
-                            <option key={propId} selected={propSelected === option ? "selected" : ""} value={option}>{option}</option>
+                            <option key={propId} selected={propSelected === option ? "selected" : ""}>{option}</option>
                         )
                     })}
                 </select>
