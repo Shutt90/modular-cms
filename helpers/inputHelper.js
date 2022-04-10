@@ -46,7 +46,7 @@ const addDropdown = function(options = Array, name, propId, propSelected, labelT
         return (
             <>  
                 <label htmlFor={`${name}-${propId}`}>{labelText}</label>
-                <select id={`${name}-${propId}`} name={`${name}-${propId}`}>
+                <select id={`${name}-${propId}`} onChange={(e) => e.preventDefault()} name={`${name}-${propId}`}>
                     {options.map((option) => {
                         return (
                             <option key={propId} selected={propSelected === option ? "selected" : ""} value={option}>{option}</option>

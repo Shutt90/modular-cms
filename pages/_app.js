@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps, }) {
     <>
     <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Notable&family=Pirata+One&family=Squada+One&family=Teko&display=swap" rel="stylesheet"></link>
     </Head>
     <AuthLayout>
