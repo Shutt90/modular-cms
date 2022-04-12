@@ -11,7 +11,7 @@ function Products({products}) {
           return (
             <Link key={product.id} href={{
               query: product,
-              pathname:`/auth/edit/product/${decapitalize(product.title.trim())}`,
+              pathname:`/auth/modules/${decapitalize(product.title.trim())}`,
               }}>
                 <a className="flex-col text-med" >
                   <h4>{product.title}</h4>
@@ -36,6 +36,9 @@ export async function getServerSideProps(context) {
         priority: 'asc',
       }
     ],
+    include: {
+      categoryRelation: true,
+    }
   })
   products.forEach(product => {
     delete product.createdAt

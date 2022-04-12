@@ -18,7 +18,7 @@ function Title() {
                 </a>
             </Link>
         </div>
-        <Tabs model={product} modelName="products" tabs={['form', 'rows', 'settings']}/>
+        <Tabs model={product} modelName="products" tabs={['form', 'settings']}/>
 
     </div>
     )

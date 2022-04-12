@@ -30,6 +30,7 @@ export default Pages
 export async function getServerSideProps(context) {
 
   const prisma = new PrismaClient
+
   const pages = await prisma.page.findMany({
     orderBy: [
       {
@@ -41,7 +42,7 @@ export async function getServerSideProps(context) {
     delete page.createdAt
     delete page.updatedAt
   })
-  
+
   return {
     props: { pages }
   }

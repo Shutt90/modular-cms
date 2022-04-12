@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import PagesEdit from '/containers/forms/edit/PagesEditForm';
 import ProductsEdit from '/containers/forms/edit/ProductsEditForm';
 import { useRouter } from 'next/dist/client/router';
+import ProductCategories from './modules/ProductCategories';
+import CategoriesEdit from './forms/edit/CategoriesEditForm';
+import CategoriesProducts from './forms/edit/CategoriesProductForm';
 
 function Tabs({tabs = Array, model, modelName}) {
     const router = useRouter();
@@ -37,11 +40,14 @@ function Tabs({tabs = Array, model, modelName}) {
 
             {modelName === 'pages' ? <PagesEdit model={model}/> : '' }
             {modelName === 'products' ? <ProductsEdit model={model}/> : '' }
+            {modelName === 'categories' ? <CategoriesEdit model={model}/> : '' }
 
         </div>
 
         <div className={`container`} id={`${tabs[1]}`}>
             <h2>{tabs[1]}</h2>
+            {modelName === 'categories' ? <CategoriesProducts model={model}/> : '' }
+
         </div>
 
         <div className={`container`} id={`${tabs[2]}`}>
