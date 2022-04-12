@@ -3,9 +3,10 @@ import styles from '/styles/containers/tabs.module.css'
 import Tab from '../comps/Tab';
 import { useState, useEffect } from 'react';
 import PagesEdit from '/containers/forms/edit/PagesEditForm';
+import ProductsEdit from '/containers/forms/edit/ProductsEditForm';
 import { useRouter } from 'next/dist/client/router';
 
-function Tabs({tabs = Array, model}) {
+function Tabs({tabs = Array, model, modelName}) {
     const router = useRouter();
     const [activeTab, setActiveTab] = useState(0)
 
@@ -33,7 +34,10 @@ function Tabs({tabs = Array, model}) {
         </div>
 
         <div className={`container`} id={`${tabs[0]}`}>
-            <PagesEdit model={model}/>
+
+            {modelName === 'pages' ? <PagesEdit model={model}/> : '' }
+            {modelName === 'products' ? <ProductsEdit model={model}/> : '' }
+
         </div>
 
         <div className={`container`} id={`${tabs[1]}`}>

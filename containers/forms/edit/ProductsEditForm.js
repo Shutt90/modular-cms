@@ -1,4 +1,5 @@
-import { addInput } from "../../../helpers/inputHelper"
+import {addInput, addDropdown, addSubmit} from '/helpers/inputHelper';
+import { removedUndefined } from '/helpers/stringHelpers';
 
 function ProductsEditForm({model}) {
   const active = ['true', 'false']

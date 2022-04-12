@@ -1,6 +1,8 @@
-import React from 'react'
+import {addInput, addDropdown, addSubmit} from '/helpers/inputHelper';
+import { removedUndefined } from '/helpers/stringHelpers';
 
-function PagesEditForm() {
+function PagesEditForm({model}) {
+  const active = ['true', 'false']
   return (
     <form method="POST" className="edit-form" action={`/api/edit/page/${model.id}`}>
         {addInput('text', 'title', removedUndefined(model.title), model.id, 'Title')}

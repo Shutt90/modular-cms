@@ -8,7 +8,6 @@ function Title() {
     const router = useRouter();
     const page = router.query;  
 
-
     return (
     <div className="container">
         <div className="flex align-center justify-between">
@@ -19,7 +18,7 @@ function Title() {
                 </a>
             </Link>
         </div>
-        <Tabs model={page} tabs={['form', 'rows', 'settings']}/>
+        <Tabs modelName={'pages'} model={page} tabs={['form', 'rows', 'settings']}/>
 
     </div>
     )
